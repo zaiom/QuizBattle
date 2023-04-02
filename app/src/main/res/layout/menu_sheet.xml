@@ -27,7 +27,8 @@
             android:layout_margin="50dp"
             android:backgroundTint="#000000"
             android:text="Single Player"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/multi_player_button"
@@ -36,7 +37,8 @@
             android:layout_margin="50dp"
             android:backgroundTint="#000000"
             android:text="Multi Player"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/add_quiz_button"
@@ -45,7 +47,8 @@
             android:layout_margin="50dp"
             android:backgroundTint="#000000"
             android:text="Add Quiz"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 
