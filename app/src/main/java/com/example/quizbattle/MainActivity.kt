@@ -25,6 +25,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        val intent = Intent(this, QuestionActivity::class.java)
+
     }
 }
