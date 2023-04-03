@@ -5,7 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/Tlo"
+    android:padding="24dp"
     tools:context=".QuestionActivity">
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -92,3 +96,5 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
