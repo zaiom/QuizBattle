@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val singlePlayerButton = findViewById<View>(R.id.single_player_button)
+        val singlePlayerButton = findViewById<View>(R.id.singlePlayerButton)
+
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
