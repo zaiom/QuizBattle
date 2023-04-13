@@ -20,7 +20,7 @@
 =======
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
     android:background="@drawable/tlo"
-    android:padding="24dp"
+    android:padding="25dp"
     android:fillViewport="true"
     tools:context=".QuestionActivity"
     android:theme="@style/FullScreenTheme">
