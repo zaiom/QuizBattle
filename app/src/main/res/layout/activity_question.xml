@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+=======
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,9 +19,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 <<<<<<< HEAD
+<<<<<<< HEAD
     android:orientation="vertical"
 =======
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+=======
+<<<<<<< HEAD
+    android:orientation="vertical"
+=======
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+=======
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
     android:background="@drawable/tlo"
     android:padding="24dp"
     android:fillViewport="true"
@@ -20,6 +38,10 @@
     android:theme="@style/FullScreenTheme">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,6 +101,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+=======
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
         android:gravity="center_vertical"
         android:layout_marginTop="5dp"
         android:id="@+id/progressBarLayout"
@@ -138,30 +165,60 @@
 
         <Button
             android:id="@+id/answer1Button"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+=======
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:backgroundTint="#000000"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
             android:text="Answer C"
 =======
             android:text="Answer A"
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+<<<<<<< HEAD
+=======
+=======
+            android:text="Answer A"
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
             android:textColor="@color/white"
             android:textAllCaps="false"/>
 
         <Button
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
             android:id="@+id/answ_D_button"
 =======
             android:id="@+id/answer2Button"
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+<<<<<<< HEAD
+=======
+=======
+            android:id="@+id/answer2Button"
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:backgroundTint="#000000"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
             android:text="Answer D"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
@@ -199,5 +256,37 @@
 </RelativeLayout>
 
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+<<<<<<< HEAD
+=======
+=======
+            android:text="Answer B"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/answer3Button"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#000000"
+            android:text="Answer C"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/answer4Button"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#000000"
+            android:text="Answer D"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+</RelativeLayout>
+
+>>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
+>>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
 
 
