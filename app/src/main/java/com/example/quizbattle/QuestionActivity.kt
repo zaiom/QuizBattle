@@ -1,50 +1,35 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.quizbattle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import kotlin.math.log
-import android.widget.ProgressBar
-
+import com.example.quizbattle.databinding.ActivityQuestionBinding
 
 class QuestionActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityQuestionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_question)
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        //setContentView(R.layout.activity_question)
+        setContentView(binding.root)
 
-        val progressBar = findViewById<View>(R.id.progressBar)
-        val progressText = findViewById<View>(R.id.progressText)
-        val questionText = findViewById<View>(R.id.questionText)
-        val questionImage = findViewById<View>(R.id.questionImage)
-
-        val answerA = findViewById<View>(R.id.answer1Button)
-        val answerB = findViewById<View>(R.id.answer2Button)
-        val answerC = findViewById<View>(R.id.answer3Button)
-        val answerD = findViewById<View>(R.id.answer4Button)
-
-
-
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         val questionsList = Constants.getQuestions()
-        Log.i("Questions Size", "${questionsList.size}")
-
         val currentPosition = 1
         val question: Question? = questionsList[currentPosition - 1]
 
-        progressBar.progress = currentPosition
-        progressText.text = "$currentPosition" +  "/" + progressBar.max
+        binding.progressBar.progress = currentPosition
+        binding.progressText.text = "$currentPosition/${binding.progressBar.max}"
 
-        questionText.text = question!!.question
+        binding.questionText.text = question!!.question
+        binding.questionImage.setImageResource(question.image)
 
-        questionImage.setImageResource(question.image)
-
-        answerA.text = question.optionOne
-        answerB.text = question.optionTwo
-        answerC.text = question.optionThree
-        answerD.text = question.optionFour
+        binding.answer1Button.text = question.optionOne
+        binding.answer2Button.text = question.optionTwo
+        binding.answer3Button.text = question.optionThree
+        binding.answer4Button.text = question.optionFour
     }
 }

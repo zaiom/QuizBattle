@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/tlo"
     android:padding="24dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:theme="@style/FullScreenTheme">
 
     <TextView
         android:layout_width="wrap_content"
