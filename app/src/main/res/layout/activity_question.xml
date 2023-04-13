@@ -32,7 +32,7 @@
 >>>>>>> c0d69c5ea8b61f4472bf3f5fc2e328c5d601d54f
 >>>>>>> eb741ebb883f55cb530c889c104a036a15a419d4
     android:background="@drawable/tlo"
-    android:padding="24dp"
+    android:padding="25dp"
     android:fillViewport="true"
     tools:context=".QuestionActivity"
     android:theme="@style/FullScreenTheme">
