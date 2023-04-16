@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Tlo"
+    android:background="@drawable/tlo"
     android:padding="24dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:theme="@style/FullScreenTheme">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,35 +27,36 @@
         android:orientation="vertical"
         android:paddingTop="80dp">
 
+
         <Button
-            android:id="@+id/single_player_button"
+            android:id="@+id/singlePlayerButton"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="25dp"
             android:backgroundTint="#000000"
             android:text="Single Player"
-            android:textColor="@color/white"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/multi_player_button"
+            android:id="@+id/multiPlayerButton"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="20dp"
             android:backgroundTint="#000000"
             android:text="Multi Player"
-            android:textColor="@color/white"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/add_quiz_button"
+            android:id="@+id/addQuizButton"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="25dp"
             android:backgroundTint="#000000"
             android:text="Add Quiz"
-            android:textColor="@color/white"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

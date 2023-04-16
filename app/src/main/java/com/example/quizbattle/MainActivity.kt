@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.quizbattle
 
 import android.content.Intent
@@ -7,24 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.example.quizbattle.databinding.ActivityQuestionBinding
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityQuestionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val singlePlayerButton = findViewById<View>(R.id.single_player_button)
-
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
-        singlePlayerButton.setOnClickListener {
+        binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
             val intent = Intent(this, QuestionActivity::class.java)
             startActivity(intent)
             finish()
         }
-
 
     }
 }

@@ -5,4 +5,10 @@
     <!--Customize your theme here. -->
     <item name="colorPrimary">@color/black</item>
 </style>
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@color/sample1</item>
+        <item name="android:statusBarColor">@color/sample2</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>
