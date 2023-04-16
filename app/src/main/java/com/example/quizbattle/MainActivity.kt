@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.quizbattle.databinding.ActivityQuestionBinding
+import com.example.quizbattle.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityQuestionBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
