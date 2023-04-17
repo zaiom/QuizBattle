@@ -25,7 +25,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         //setContentView(R.layout.activity_question)
         setContentView(binding.root)
 
-        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         mQuestionsList = Constants.getQuestions()
 
