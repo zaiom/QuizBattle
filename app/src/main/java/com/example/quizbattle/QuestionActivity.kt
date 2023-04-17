@@ -34,7 +34,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         setQuestion()
 
-        //TODO: it is made for the textviews, wonder if it works for buttons also? answer: prob yes
         binding.root.findViewById<View>(R.id.answer1Button).setOnClickListener(this)
         binding.root.findViewById<View>(R.id.answer2Button).setOnClickListener(this)
         binding.root.findViewById<View>(R.id.answer3Button).setOnClickListener(this)
@@ -108,7 +107,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private fun submitAnswer(){
         if (mSelectedOptionPosition == 0){
             mCurrentPosition ++
-
             when{
                 mCurrentPosition <= mQuestionsList!!.size -> {
                     setQuestion()
@@ -120,14 +118,14 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         }
         else {
             val question = mQuestionsList?.get(mCurrentPosition - 1)
-            if (question!!.correctAnswer != mSelectedOptionPosition) {
+            if (question?.correctAnswer != mSelectedOptionPosition) {
                 answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
             }
-
-            answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
-
+            answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)
             mSelectedOptionPosition = 0
-            //Handler().postDelayed({ submitAnswer() }, 5000)
+            Handler().postDelayed({
+                setQuestion()
+            }, 5000)
         }
     }
 
@@ -148,21 +146,18 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         }
     }
 
-    //TODO: change TextView to the button so it format well?
     private fun selectedOptionView(button: Button, selectedOptionNumber: Int) {
 
-        //defaultOptionsView()
+        defaultOptionsView()
         mSelectedOptionPosition = selectedOptionNumber
-
         button.setTypeface(button.typeface, Typeface.BOLD)
 
-
-
-
-
-    //tv.setTextColor((Color.parseColor("#D50909")))
-
-        //tv.setTypeface(tv.typeface, Typeface.BOLD)
-        //tv.background = ContextCompat.getDrawable(R.drawable.ic_launcher_background)
+        val question = mQuestionsList?.get(mCurrentPosition - 1)
+        if (selectedOptionNumber == question?.correctAnswer) {
+            answerView(selectedOptionNumber, R.drawable.correct_option_button_border_bg)
+        } else {
+            answerView(selectedOptionNumber, R.drawable.wrong_option_button_border_bg)
+            answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)
+        }
     }
 }
