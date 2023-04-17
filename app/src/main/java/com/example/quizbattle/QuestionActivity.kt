@@ -159,5 +159,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             answerView(selectedOptionNumber, R.drawable.wrong_option_button_border_bg)
             answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)
         }
+        submitAnswer() // show the feedback immediately
     }
 }
