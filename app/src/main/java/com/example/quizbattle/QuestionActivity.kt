@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizbattle.databinding.ActivityQuestionBinding
+import android.os.Handler
+
 
 class QuestionActivity : AppCompatActivity(), OnClickListener{
 
@@ -25,7 +28,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         //setContentView(R.layout.activity_question)
         setContentView(binding.root)
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         mQuestionsList = Constants.getQuestions()
 
@@ -43,7 +46,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         val question = mQuestionsList!![mCurrentPosition - 1]                   // !! means if mQuestions > null: do
 
-        //defaultOptionsView()
+        defaultOptionsView()
 
         binding.progressBar.progress = mCurrentPosition
         binding.progressText.text = "$mCurrentPosition/${binding.progressBar.max}"
@@ -57,20 +60,19 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         binding.answer4Button.text = question.optionFour
     }
 
-    //TODO: check if it could format the buttons also
-
     // function changes look of buttons/TextViews
     private fun defaultOptionsView(){
 
-        val options = ArrayList<TextView>()
-        options.add(0, binding.progressText)
+        val options = ArrayList<Button>()
+        options.add(binding.answer1Button)
+        options.add(binding.answer2Button)
+        options.add(binding.answer3Button)
+        options.add(binding.answer4Button)
 
-        for (option in options){
-            option.setTextColor((Color.parseColor("#D50909")))
-            option.typeface = Typeface.DEFAULT                                               //sets the typeface and the style in which text should be displayed
-
-
-            //option.background = ContextCompat.getDrawable(R.drawable.ic_launcher_background)
+        for (option in options) {
+            option.setTextColor(Color.parseColor("#FFFFFF"))
+            option.setTypeface(Typeface.DEFAULT)
+            option.setBackgroundColor(Color.parseColor("#000000"))
         }
     }
 
@@ -79,19 +81,25 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         when(v?.id){
             R.id.answer1Button ->{
                 selectedOptionView(binding.answer1Button, 1)
-                submitAnswer()
+                //submitAnswer()
             }
             R.id.answer2Button ->{
                 selectedOptionView(binding.answer2Button, 2)
-                submitAnswer()
+                //submitAnswer()
             }
             R.id.answer3Button ->{
                 selectedOptionView(binding.answer3Button, 3)
-                submitAnswer()
+                //submitAnswer()
             }
             R.id.answer4Button ->{
                 selectedOptionView(binding.answer4Button, 4)
-                submitAnswer()
+                //submitAnswer()
+                //delay(5000)
+
+                // opóźnienie wyświetlenia kolejnego pytania
+                Handler().postDelayed({
+                    submitAnswer()
+                }, 5000)
 
             }
         }
@@ -119,6 +127,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
 
             mSelectedOptionPosition = 0
+            //Handler().postDelayed({ submitAnswer() }, 5000)
         }
     }
 
@@ -140,13 +149,19 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     }
 
     //TODO: change TextView to the button so it format well?
-    private fun selectedOptionView(tv: TextView, selectedOptionNumber: Int) {
+    private fun selectedOptionView(button: Button, selectedOptionNumber: Int) {
 
         //defaultOptionsView()
         mSelectedOptionPosition = selectedOptionNumber
 
-        tv.setTextColor((Color.parseColor("#D50909")))
-        tv.typeface = Typeface.DEFAULT
+        button.setTypeface(button.typeface, Typeface.BOLD)
+
+
+
+
+
+    //tv.setTextColor((Color.parseColor("#D50909")))
+
         //tv.setTypeface(tv.typeface, Typeface.BOLD)
         //tv.background = ContextCompat.getDrawable(R.drawable.ic_launcher_background)
     }
