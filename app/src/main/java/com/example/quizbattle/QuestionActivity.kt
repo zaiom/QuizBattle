@@ -71,43 +71,35 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         for (option in options) {
             option.setTextColor(Color.parseColor("#FFFFFF"))
             option.setTypeface(Typeface.DEFAULT)
-            option.setBackgroundColor(Color.parseColor("#000000"))
+            //option.setBackgroundColor(Color.parseColor("#000000"))
         }
     }
 
     //TODO: Check if it works well
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.answer1Button ->{
+        when (v?.id) {
+            R.id.answer1Button -> {
                 selectedOptionView(binding.answer1Button, 1)
-                //submitAnswer()
             }
-            R.id.answer2Button ->{
+            R.id.answer2Button -> {
                 selectedOptionView(binding.answer2Button, 2)
-                //submitAnswer()
             }
-            R.id.answer3Button ->{
+            R.id.answer3Button -> {
                 selectedOptionView(binding.answer3Button, 3)
-                //submitAnswer()
             }
-            R.id.answer4Button ->{
+            R.id.answer4Button -> {
                 selectedOptionView(binding.answer4Button, 4)
-                //submitAnswer()
-                //delay(5000)
-
-                // opóźnienie wyświetlenia kolejnego pytania
                 Handler().postDelayed({
                     submitAnswer()
                 }, 5000)
-
             }
         }
     }
 
-    private fun submitAnswer(){
-        if (mSelectedOptionPosition == 0){
-            mCurrentPosition ++
-            when{
+    private fun submitAnswer() {
+        if (mSelectedOptionPosition == 0) {
+            mCurrentPosition++
+            when {
                 mCurrentPosition <= mQuestionsList!!.size -> {
                     setQuestion()
                 }
@@ -115,13 +107,13 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
                     Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        else {
+        } else {
             val question = mQuestionsList?.get(mCurrentPosition - 1)
             if (question?.correctAnswer != mSelectedOptionPosition) {
                 answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+            } else {
+                answerView(mSelectedOptionPosition, R.drawable.correct_option_button_border_bg)
             }
-            answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)
             mSelectedOptionPosition = 0
             Handler().postDelayed({
                 setQuestion()
@@ -129,18 +121,18 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         }
     }
 
-    private fun answerView(answer: Int, drawableView: Int){
-        when(answer){
-            1 ->{
+    private fun answerView(answer: Int, drawableView: Int) {
+        when (answer) {
+            1 -> {
                 binding.answer1Button.background = ContextCompat.getDrawable(this, drawableView)
             }
-            2 ->{
+            2 -> {
                 binding.answer2Button.background = ContextCompat.getDrawable(this, drawableView)
             }
-            3 ->{
+            3 -> {
                 binding.answer3Button.background = ContextCompat.getDrawable(this, drawableView)
             }
-            4 ->{
+            4 -> {
                 binding.answer4Button.background = ContextCompat.getDrawable(this, drawableView)
             }
         }
