@@ -41,6 +41,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     }
 
+    // displays new question
     private fun setQuestion(){
 
         val question = mQuestionsList!![mCurrentPosition - 1]                   // !! means if mQuestions > null: do
@@ -71,7 +72,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         for (option in options) {
             option.setTextColor(Color.parseColor("#FFFFFF"))
             option.setTypeface(Typeface.DEFAULT)
-            //option.setBackgroundColor(Color.parseColor("#000000"))
+            //option.setBackgroundColor(Color.parseColor("#000000")) aaaaa
         }
     }
 
@@ -96,6 +97,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         }
     }
 
+    //TODO: pętla when zawsze działa wiec nie wchodzi w else?
     private fun submitAnswer() {
         if (mSelectedOptionPosition == 0) {
             mCurrentPosition++
