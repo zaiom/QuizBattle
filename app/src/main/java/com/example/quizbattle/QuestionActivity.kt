@@ -23,6 +23,11 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     private lateinit var binding: ActivityQuestionBinding
 
+    private var button1 = binding.answer1Button
+    private var button2 = binding.answer2Button
+    private var button3 = binding.answer3Button
+    private var button4 = binding.answer4Button
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +40,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         mQuestionsList = Constants.getQuestions()
 
-        var button1 = binding.answer1Button
-        var button2 = binding.answer2Button
-        var button3 = binding.answer3Button
-        var button4 = binding.answer4Button
+
 
         setQuestion()
 
