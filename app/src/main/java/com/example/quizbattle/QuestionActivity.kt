@@ -1,5 +1,6 @@
 package com.example.quizbattle
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -14,13 +15,20 @@ import com.example.quizbattle.databinding.ActivityQuestionBinding
 import android.os.Handler
 
 
-class QuestionActivity : AppCompatActivity(), OnClickListener{
+class QuestionActivity : AppCompatActivity(), View.OnClickListener{
 
     private var mCurrentPosition: Int = 1                           // number of a question
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0                    // selected answer button
 
+    private var button1 = binding.answer1Button
+    private var button2 = binding.answer2Button
+    private var button3 = binding.answer3Button
+    private var button4 = binding.answer4Button
+
     private lateinit var binding: ActivityQuestionBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,125 +42,75 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         setQuestion()
 
-        binding.root.findViewById<View>(R.id.answer1Button).setOnClickListener(this)
-        binding.root.findViewById<View>(R.id.answer2Button).setOnClickListener(this)
-        binding.root.findViewById<View>(R.id.answer3Button).setOnClickListener(this)
-        binding.root.findViewById<View>(R.id.answer4Button).setOnClickListener(this)
+        button1.setOnClickListener(this)
+        button2.setOnClickListener(this)
+        button3.setOnClickListener(this)
+        button4.setOnClickListener(this)
+
 
     }
 
-    // displays new question
+    // sets question text, image, and button's text for the next question
     private fun setQuestion(){
 
-        val question = mQuestionsList!![mCurrentPosition - 1]                   // !! means if mQuestions > null: do
+        mCurrentPosition = 1
+        val question = mQuestionsList!![mCurrentPosition-1]
 
-        defaultOptionsView()
+        defaultOptionView()
 
         binding.progressBar.progress = mCurrentPosition
-        binding.progressText.text = "$mCurrentPosition/${binding.progressBar.max}"
+        binding.progressText.text = "$mCurrentPosition" + "/" + binding.progressBar.max
 
         binding.questionText.text = question!!.question
         binding.questionImage.setImageResource(question.image)
 
-        binding.answer1Button.text = question.optionOne
-        binding.answer2Button.text = question.optionTwo
-        binding.answer3Button.text = question.optionThree
-        binding.answer4Button.text = question.optionFour
+
+        button1.text = question.optionOne
+        button2.text = question.optionTwo
+        button3.text = question.optionThree
+        button4.text = question.optionFour
+
     }
 
-    // function changes look of buttons/TextViews
-    private fun defaultOptionsView(){
+    //sets apperance of the buttons after setting new question
+    private fun defaultOptionView(){
 
         val options = ArrayList<Button>()
-        options.add(binding.answer1Button)
-        options.add(binding.answer2Button)
-        options.add(binding.answer3Button)
-        options.add(binding.answer4Button)
+        options.add(0, button1)
+        options.add(1, button2)
+        options.add(2, button3)
+        options.add(3, button4)
 
-        for (option in options) {
-            option.setTextColor(Color.parseColor("#FFFFFF"))
-            option.setTypeface(Typeface.DEFAULT)
-            //option.setBackgroundColor(Color.parseColor("#000000")) aaaaa
+        for (option in options){
+            option.setBackgroundColor(Color.parseColor("#000000"))
+            //option.background = ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
+            //option.typeface = Typeface.DEFAULT                                  // sets the typeface and style in which the text should be displayed
+
         }
     }
-
-    //TODO: Check if it works well
     override fun onClick(v: View?) {
-        when (v?.id) {
+
+        when (v?.id){
+            // ??? czy to git?
             R.id.answer1Button -> {
-                selectedOptionView(binding.answer1Button, 1)
+                selectedOptionView(button1, 1)
             }
             R.id.answer2Button -> {
-                selectedOptionView(binding.answer2Button, 2)
-            }
-            R.id.answer3Button -> {
-                selectedOptionView(binding.answer3Button, 3)
-            }
-            R.id.answer4Button -> {
-                selectedOptionView(binding.answer4Button, 4)
-                Handler().postDelayed({
-                    submitAnswer()
-                }, 5000)
+                selectedOptionView(button2, 2)
             }
         }
     }
 
-    //TODO: pętla when zawsze działa wiec nie wchodzi w else?
-    private fun submitAnswer() {
-        if (mSelectedOptionPosition == 0) {
-            mCurrentPosition++
-            when {
-                mCurrentPosition <= mQuestionsList!!.size -> {
-                    setQuestion()
-                }
-                else -> {
-                    Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-                }
-            }
-        } else {
-            val question = mQuestionsList?.get(mCurrentPosition - 1)
-            if (question?.correctAnswer != mSelectedOptionPosition) {
-                answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-            } else {
-                answerView(mSelectedOptionPosition, R.drawable.correct_option_button_border_bg)
-            }
-            mSelectedOptionPosition = 0
-            Handler().postDelayed({
-                setQuestion()
-            }, 5000)
-        }
+    // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
+    private fun selectedOptionView(button: Button, selectedOptionNum: Int){
+
+        //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz inny guzik to masz zresetowac "zaznaczenie" innych guzikow, wiec out
+        mSelectedOptionPosition = selectedOptionNum
+
+        // just for tests
+        button.setTextColor(Color.parseColor("#FFBB86FC"))
+        button.typeface = Typeface.DEFAULT_BOLD
+
     }
 
-    private fun answerView(answer: Int, drawableView: Int) {
-        when (answer) {
-            1 -> {
-                binding.answer1Button.background = ContextCompat.getDrawable(this, drawableView)
-            }
-            2 -> {
-                binding.answer2Button.background = ContextCompat.getDrawable(this, drawableView)
-            }
-            3 -> {
-                binding.answer3Button.background = ContextCompat.getDrawable(this, drawableView)
-            }
-            4 -> {
-                binding.answer4Button.background = ContextCompat.getDrawable(this, drawableView)
-            }
-        }
-    }
-
-    private fun selectedOptionView(button: Button, selectedOptionNumber: Int) {
-
-        defaultOptionsView()
-        mSelectedOptionPosition = selectedOptionNumber
-        button.setTypeface(button.typeface, Typeface.BOLD)
-
-        val question = mQuestionsList?.get(mCurrentPosition - 1)
-        if (selectedOptionNumber == question?.correctAnswer) {
-            answerView(selectedOptionNumber, R.drawable.correct_option_button_border_bg)
-        } else {
-            answerView(selectedOptionNumber, R.drawable.wrong_option_button_border_bg)
-            answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)
-        }
-        submitAnswer() // show the feedback immediately
-    }
 }
