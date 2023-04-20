@@ -23,10 +23,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     private lateinit var binding: ActivityQuestionBinding
 
-    private var button1 = binding.answer1Button
-    private var button2 = binding.answer2Button
-    private var button3 = binding.answer3Button
-    private var button4 = binding.answer4Button
+
 
 
 
@@ -40,14 +37,12 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         mQuestionsList = Constants.getQuestions()
 
-
-
         setQuestion()
 
-        button1.setOnClickListener(this)
-        button2.setOnClickListener(this)
-        button3.setOnClickListener(this)
-        button4.setOnClickListener(this)
+        binding.answer1Button.setOnClickListener(this)
+        binding.answer2Button.setOnClickListener(this)
+        binding.answer3Button.setOnClickListener(this)
+        binding.answer4Button.setOnClickListener(this)
 
 
     }
@@ -55,7 +50,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     // sets question text, image, and button's text for the next question
     private fun setQuestion(){
 
-        mCurrentPosition = 1
         val question = mQuestionsList!![mCurrentPosition-1]
 
         defaultOptionView()
@@ -67,21 +61,34 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         binding.questionImage.setImageResource(question.image)
 
 
-        button1.text = question.optionOne
-        button2.text = question.optionTwo
-        button3.text = question.optionThree
-        button4.text = question.optionFour
+        binding.answer1Button.text = question.optionOne
+        binding.answer2Button.text = question.optionTwo
+        binding.answer3Button.text = question.optionThree
+        binding.answer4Button.text = question.optionFour
 
+    }
+
+    // asigning right background to our option ( button )
+    private fun answerView(answer: Int, drawableView: Int){
+        when (answer){
+            1 -> {
+                binding.answer1Button.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            2 -> {
+                binding.answer2Button.background = ContextCompat.getDrawable(this, drawableView)
+            }
+        }
     }
 
     //sets apperance of the buttons after setting new question
     private fun defaultOptionView(){
 
         val options = ArrayList<Button>()
-        options.add(0, button1)
-        options.add(1, button2)
-        options.add(2, button3)
-        options.add(3, button4)
+        options.add(0, binding.answer1Button)
+        options.add(1, binding.answer2Button)
+        options.add(2, binding.answer3Button)
+        options.add(3, binding.answer4Button)
 
         for (option in options){
             option.setBackgroundColor(Color.parseColor("#000000"))
@@ -95,10 +102,37 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         when (v?.id){
             // ??? czy to git?
             R.id.answer1Button -> {
-                selectedOptionView(button1, 1)
+                selectedOptionView(binding.answer1Button, 1)
+
+                if (mSelectedOptionPosition == 0){
+                    mCurrentPosition ++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+                    }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
+                }
+                mSelectedOptionPosition = 0
+
+
+
+
+
+
+
             }
             R.id.answer2Button -> {
-                selectedOptionView(button2, 2)
+                selectedOptionView(binding.answer2Button, 2)
             }
         }
     }
@@ -106,7 +140,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
     private fun selectedOptionView(button: Button, selectedOptionNum: Int){
 
-        //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz inny guzik to masz zresetowac "zaznaczenie" innych guzikow, wiec out
+        //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz drugi guzik to masz zresetowac "zaznaczenie" pierwszego guzika, wiec out
         mSelectedOptionPosition = selectedOptionNum
 
         // just for tests
