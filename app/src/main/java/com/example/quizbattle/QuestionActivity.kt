@@ -78,6 +78,14 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             2 -> {
                 binding.answer2Button.background = ContextCompat.getDrawable(this, drawableView)
             }
+
+            3 -> {
+                binding.answer3Button.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            4 -> {
+                binding.answer4Button.background = ContextCompat.getDrawable(this, drawableView)
+            }
         }
     }
 
@@ -122,19 +130,84 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
                 }
-                mSelectedOptionPosition = 0
-
-
-
-
-
 
 
             }
             R.id.answer2Button -> {
                 selectedOptionView(binding.answer2Button, 2)
+
+                if (mSelectedOptionPosition == 0){
+                    mCurrentPosition ++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+                    }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
+                }
+            }
+
+
+
+
+            R.id.answer3Button -> {
+                selectedOptionView(binding.answer2Button, 3)
+
+
+                if (mSelectedOptionPosition == 0){
+                    mCurrentPosition ++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+                    }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
+                }
+            }
+            R.id.answer4Button -> {
+                selectedOptionView(binding.answer2Button, 4)
+
+
+                if (mSelectedOptionPosition == 0){
+                    mCurrentPosition ++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+                    }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
+                }
             }
         }
+
+        mSelectedOptionPosition = 0
     }
 
     // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
