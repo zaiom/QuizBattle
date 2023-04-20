@@ -15,16 +15,11 @@ import com.example.quizbattle.databinding.ActivityQuestionBinding
 import android.os.Handler
 
 
-class QuestionActivity : AppCompatActivity(), View.OnClickListener{
+class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     private var mCurrentPosition: Int = 1                           // number of a question
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0                    // selected answer button
-
-    private var button1 = binding.answer1Button
-    private var button2 = binding.answer2Button
-    private var button3 = binding.answer3Button
-    private var button4 = binding.answer4Button
 
     private lateinit var binding: ActivityQuestionBinding
 
@@ -39,6 +34,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener{
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         mQuestionsList = Constants.getQuestions()
+
+        var button1 = binding.answer1Button
+        var button2 = binding.answer2Button
+        var button3 = binding.answer3Button
+        var button4 = binding.answer4Button
 
         setQuestion()
 
