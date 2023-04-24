@@ -167,6 +167,8 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
 
             mSelectedOptionPosition = 0
+
+            Thread.sleep(3000)
         }
     }
 
