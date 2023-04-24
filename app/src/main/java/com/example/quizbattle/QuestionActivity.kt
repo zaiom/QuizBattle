@@ -58,7 +58,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         defaultOptionView()
 
-        binding.progressBar.progress = mCurrentPosition
+        binding.progressBar.progress = ((mCurrentPosition*100)/mQuestionsList!!.size)/10
         binding.progressText.text = "$mCurrentPosition" + "/" + mQuestionsList!!.size
 
         binding.questionText.text = question!!.question
