@@ -47,7 +47,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 
     }
-
     // sets question text, image, and button's text for the next question
     private fun setQuestion(){
 
@@ -121,12 +120,12 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             }
 
             R.id.answer3Button -> {
-                selectedOptionView(binding.answer2Button, 3)
+                selectedOptionView(binding.answer3Button, 3)
                 checkAnswer()
             }
 
             R.id.answer4Button -> {
-                selectedOptionView(binding.answer2Button, 4)
+                selectedOptionView(binding.answer4Button, 4)
                 checkAnswer()
             }
         }
@@ -137,13 +136,14 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         if (mSelectedOptionPosition == 0)
         {
-            mCurrentPosition ++
+
 
             when
             {
                 mCurrentPosition <= mQuestionsList!!.size ->
                 {
-                    setQuestion()
+//
+//                    setQuestion()
                 }
                 else -> {
                 Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
@@ -167,8 +167,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
 
             mSelectedOptionPosition = 0
-
-            Thread.sleep(3000)
+            mCurrentPosition ++
         }
     }
 
@@ -176,8 +175,25 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
     private fun selectedOptionView(button: Button, selectedOptionNum: Int){
 
-        //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz drugi guzik to masz zresetowac "zaznaczenie" pierwszego guzika, wiec out
+        defaultOptionView()
         mSelectedOptionPosition = selectedOptionNum
+//        val question = mQuestionsList?.get(mCurrentPosition - 1)
+
+        // check if this is the last question
+//        if (mCurrentPosition == mQuestionsList!!.size) {
+//            button.text = "Finish"
+//        }
+        Handler().postDelayed({
+            // increment mCurrentPosition and set new question
+//            mCurrentPosition++
+            if (mCurrentPosition <= mQuestionsList!!.size) {
+                setQuestion()
+            } else {
+                // when all questions have been answered
+                Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+            }
+        }, 2000) // wait for 1 second before setting the new question
+
 
 
     }
