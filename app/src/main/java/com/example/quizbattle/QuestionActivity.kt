@@ -20,6 +20,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private var mCurrentPosition: Int = 1                           // number of a question
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0                    // selected answer button
+    private var mCorrectAnswers: Int = 0
 
     private lateinit var binding: ActivityQuestionBinding
 
@@ -111,114 +112,71 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             // ??? czy to git?
             R.id.answer1Button -> {
                 selectedOptionView(binding.answer1Button, 1)
-
-                if (mSelectedOptionPosition == 0){
-                    mCurrentPosition ++
-
-                    when {
-                        mCurrentPosition <= mQuestionsList!!.size -> {
-                            setQuestion()
-                        } else -> {
-                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-                    }
-                    }
-                } else {
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition){
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
-                    }
-                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
-                }
-
-
+                checkAnswer()
             }
+
             R.id.answer2Button -> {
                 selectedOptionView(binding.answer2Button, 2)
-
-                if (mSelectedOptionPosition == 0){
-                    mCurrentPosition ++
-
-                    when {
-                        mCurrentPosition <= mQuestionsList!!.size -> {
-                            setQuestion()
-                        } else -> {
-                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-                    }
-                    }
-                } else {
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition){
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
-                    }
-                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
-                }
+                checkAnswer()
             }
-
-
-
 
             R.id.answer3Button -> {
                 selectedOptionView(binding.answer2Button, 3)
-
-
-                if (mSelectedOptionPosition == 0){
-                    mCurrentPosition ++
-
-                    when {
-                        mCurrentPosition <= mQuestionsList!!.size -> {
-                            setQuestion()
-                        } else -> {
-                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-                    }
-                    }
-                } else {
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition){
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
-                    }
-                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
-                }
+                checkAnswer()
             }
+
             R.id.answer4Button -> {
                 selectedOptionView(binding.answer2Button, 4)
-
-
-                if (mSelectedOptionPosition == 0){
-                    mCurrentPosition ++
-
-                    when {
-                        mCurrentPosition <= mQuestionsList!!.size -> {
-                            setQuestion()
-                        } else -> {
-                        Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-                    }
-                    }
-                } else {
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition){
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-                        //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
-                    }
-                    answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
-                }
+                checkAnswer()
             }
         }
 
-        mSelectedOptionPosition = 0
     }
 
+    private fun checkAnswer(){
+
+        if (mSelectedOptionPosition == 0)
+        {
+            mCurrentPosition ++
+
+            when
+            {
+                mCurrentPosition <= mQuestionsList!!.size ->
+                {
+                    setQuestion()
+                }
+                else -> {
+                Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        else
+        {
+            val question = mQuestionsList?.get(mCurrentPosition - 1)
+
+            if (question!!.correctAnswer != mSelectedOptionPosition)
+            {
+                answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
+                //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
+            }
+            else
+            {
+                mCorrectAnswers++
+            }
+
+            answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
+
+            mSelectedOptionPosition = 0
+        }
+    }
+
+    // TODO: wyrzucic selectionOptionView?
     // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
     private fun selectedOptionView(button: Button, selectedOptionNum: Int){
 
         //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz drugi guzik to masz zresetowac "zaznaczenie" pierwszego guzika, wiec out
         mSelectedOptionPosition = selectedOptionNum
 
-        // just for tests
-        button.setTextColor(Color.parseColor("#FFBB86FC"))
-        button.typeface = Typeface.DEFAULT_BOLD
 
     }
 
