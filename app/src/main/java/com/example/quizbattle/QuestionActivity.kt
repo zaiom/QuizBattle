@@ -137,7 +137,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         if (mSelectedOptionPosition == 0)
         {
 
-
             when
             {
                 mCurrentPosition <= mQuestionsList!!.size ->
