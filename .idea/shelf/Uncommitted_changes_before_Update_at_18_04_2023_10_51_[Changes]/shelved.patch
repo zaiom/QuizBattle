@@ -1,0 +1,80 @@
+Index: app/src/main/java/com/example/quizbattle/QuestionActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.quizbattle\r\n\r\nimport android.graphics.Color\r\nimport android.graphics.Typeface\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.view.View.OnClickListener\r\nimport android.widget.Button\r\nimport android.widget.TextView\r\nimport android.widget.Toast\r\nimport androidx.core.content.ContextCompat\r\nimport com.example.quizbattle.databinding.ActivityQuestionBinding\r\nimport android.os.Handler\r\n\r\n\r\nclass QuestionActivity : AppCompatActivity(), OnClickListener{\r\n\r\n    private var mCurrentPosition: Int = 1                           // number of a question\r\n    private var mQuestionsList: ArrayList<Question>? = null\r\n    private var mSelectedOptionPosition: Int = 0                    // selected answer button\r\n\r\n    private lateinit var binding: ActivityQuestionBinding\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        binding = ActivityQuestionBinding.inflate(layoutInflater)\r\n        //setContentView(R.layout.activity_question)\r\n        setContentView(binding.root)\r\n\r\n        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN\r\n\r\n        mQuestionsList = Constants.getQuestions()\r\n\r\n        setQuestion()\r\n\r\n        binding.root.findViewById<View>(R.id.answer1Button).setOnClickListener(this)\r\n        binding.root.findViewById<View>(R.id.answer2Button).setOnClickListener(this)\r\n        binding.root.findViewById<View>(R.id.answer3Button).setOnClickListener(this)\r\n        binding.root.findViewById<View>(R.id.answer4Button).setOnClickListener(this)\r\n\r\n    }\r\n\r\n    private fun setQuestion(){\r\n\r\n        val question = mQuestionsList!![mCurrentPosition - 1]                   // !! means if mQuestions > null: do\r\n\r\n        defaultOptionsView()\r\n\r\n        binding.progressBar.progress = mCurrentPosition\r\n        binding.progressText.text = \"$mCurrentPosition/${binding.progressBar.max}\"\r\n\r\n        binding.questionText.text = question!!.question\r\n        binding.questionImage.setImageResource(question.image)\r\n\r\n        binding.answer1Button.text = question.optionOne\r\n        binding.answer2Button.text = question.optionTwo\r\n        binding.answer3Button.text = question.optionThree\r\n        binding.answer4Button.text = question.optionFour\r\n    }\r\n\r\n    // function changes look of buttons/TextViews\r\n    private fun defaultOptionsView(){\r\n\r\n        val options = ArrayList<Button>()\r\n        options.add(binding.answer1Button)\r\n        options.add(binding.answer2Button)\r\n        options.add(binding.answer3Button)\r\n        options.add(binding.answer4Button)\r\n\r\n        for (option in options) {\r\n            option.setTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            option.setTypeface(Typeface.DEFAULT)\r\n            //option.setBackgroundColor(Color.parseColor(\"#000000\"))\r\n        }\r\n    }\r\n\r\n    //TODO: Check if it works well\r\n    override fun onClick(v: View?) {\r\n        when (v?.id) {\r\n            R.id.answer1Button -> {\r\n                selectedOptionView(binding.answer1Button, 1)\r\n            }\r\n            R.id.answer2Button -> {\r\n                selectedOptionView(binding.answer2Button, 2)\r\n            }\r\n            R.id.answer3Button -> {\r\n                selectedOptionView(binding.answer3Button, 3)\r\n            }\r\n            R.id.answer4Button -> {\r\n                selectedOptionView(binding.answer4Button, 4)\r\n                Handler().postDelayed({\r\n                    submitAnswer()\r\n                }, 5000)\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun submitAnswer() {\r\n        if (mSelectedOptionPosition == 0) {\r\n            mCurrentPosition++\r\n            when {\r\n                mCurrentPosition <= mQuestionsList!!.size -> {\r\n                    setQuestion()\r\n                }\r\n                else -> {\r\n                    Toast.makeText(this, \"You have successfully completed the Quiz\", Toast.LENGTH_SHORT).show()\r\n                }\r\n            }\r\n        } else {\r\n            val question = mQuestionsList?.get(mCurrentPosition - 1)\r\n            if (question?.correctAnswer != mSelectedOptionPosition) {\r\n                answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)\r\n            } else {\r\n                answerView(mSelectedOptionPosition, R.drawable.correct_option_button_border_bg)\r\n            }\r\n            mSelectedOptionPosition = 0\r\n            Handler().postDelayed({\r\n                setQuestion()\r\n            }, 5000)\r\n        }\r\n    }\r\n\r\n    private fun answerView(answer: Int, drawableView: Int) {\r\n        when (answer) {\r\n            1 -> {\r\n                binding.answer1Button.background = ContextCompat.getDrawable(this, drawableView)\r\n            }\r\n            2 -> {\r\n                binding.answer2Button.background = ContextCompat.getDrawable(this, drawableView)\r\n            }\r\n            3 -> {\r\n                binding.answer3Button.background = ContextCompat.getDrawable(this, drawableView)\r\n            }\r\n            4 -> {\r\n                binding.answer4Button.background = ContextCompat.getDrawable(this, drawableView)\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun selectedOptionView(button: Button, selectedOptionNumber: Int) {\r\n\r\n        defaultOptionsView()\r\n        mSelectedOptionPosition = selectedOptionNumber\r\n        button.setTypeface(button.typeface, Typeface.BOLD)\r\n\r\n        val question = mQuestionsList?.get(mCurrentPosition - 1)\r\n        if (selectedOptionNumber == question?.correctAnswer) {\r\n            answerView(selectedOptionNumber, R.drawable.correct_option_button_border_bg)\r\n        } else {\r\n            answerView(selectedOptionNumber, R.drawable.wrong_option_button_border_bg)\r\n            answerView(question?.correctAnswer ?: 0, R.drawable.correct_option_button_border_bg)\r\n        }\r\n        submitAnswer() // show the feedback immediately\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/quizbattle/QuestionActivity.kt b/app/src/main/java/com/example/quizbattle/QuestionActivity.kt
+--- a/app/src/main/java/com/example/quizbattle/QuestionActivity.kt	(revision 7d970b276735d4f1f330d50716c959e36dce574b)
++++ b/app/src/main/java/com/example/quizbattle/QuestionActivity.kt	(date 1681761222764)
+@@ -140,7 +140,7 @@
+ 
+     private fun selectedOptionView(button: Button, selectedOptionNumber: Int) {
+ 
+-        defaultOptionsView()
++//        defaultOptionsView()
+         mSelectedOptionPosition = selectedOptionNumber
+         button.setTypeface(button.typeface, Typeface.BOLD)
+ 
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.QuizBattle\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".QuestionActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:windowSoftInputMode=\"adjustResize\"\r\n            android:theme=\"@style/FullScreenTheme\"/>\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:windowSoftInputMode=\"adjustResize\"\r\n            android:exported=\"true\"\r\n            android:theme=\"@style/FullScreenTheme\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 7d970b276735d4f1f330d50716c959e36dce574b)
++++ b/app/src/main/AndroidManifest.xml	(date 1681761222772)
+@@ -6,7 +6,7 @@
+         android:allowBackup="true"
+         android:dataExtractionRules="@xml/data_extraction_rules"
+         android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
++        android:icon="@drawable/android_robot"
+         android:label="@string/app_name"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.QuizBattle"
+Index: app/src/main/res/drawable/button_selector.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/button_selector.xml b/app/src/main/res/drawable/button_selector.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/button_selector.xml	(revision 7d970b276735d4f1f330d50716c959e36dce574b)
++++ /dev/null	(revision 7d970b276735d4f1f330d50716c959e36dce574b)
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/button_pressed"/>
+-    <item android:state_enabled="true" android:state_focused="true" android:drawable="@drawable/button_focused"/>
+-    <item android:state_enabled="true" android:drawable="@drawable/button_normal"/>
+-    <item android:state_enabled="false" android:drawable="@drawable/button_disabled"/>
+-</selector>
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1681761222807)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1681761222807)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <targetSelectedWithDropDown>
++      <Target>
++        <type value="QUICK_BOOT_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\Jędrek\.android\avd\QuizPhone.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-04-17T17:22:55.759892700Z" />
++  </component>
++</project>
+\ No newline at end of file
