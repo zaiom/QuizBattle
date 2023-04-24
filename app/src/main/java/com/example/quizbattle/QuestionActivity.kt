@@ -1,5 +1,6 @@
 package com.example.quizbattle
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
@@ -21,6 +22,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0                    // selected answer button
     private var mCorrectAnswers: Int = 0
+    private var mUserName: String? = null
 
     private lateinit var binding: ActivityQuestionBinding
 
@@ -35,6 +37,8 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         setContentView(binding.root)
 
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         mQuestionsList = Constants.getQuestions()
 
@@ -55,7 +59,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         defaultOptionView()
 
         binding.progressBar.progress = mCurrentPosition
-        binding.progressText.text = "$mCurrentPosition" + "/" + binding.progressBar.max
+        binding.progressText.text = "$mCurrentPosition" + "/" + mQuestionsList!!.size
 
         binding.questionText.text = question!!.question
         binding.questionImage.setImageResource(question.image)
@@ -141,11 +145,18 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             {
                 mCurrentPosition <= mQuestionsList!!.size ->
                 {
-//
-//                    setQuestion()
+                    setQuestion()
                 }
                 else -> {
-                Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+
+                    //Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, ResultActivity::class.java)
+                    intent.putExtra(Constants.USER_NAME, mUserName)
+                    intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                    intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
@@ -166,28 +177,32 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             answerView(question.correctAnswer, R.drawable.correct_option_button_border_bg)
 
             mSelectedOptionPosition = 0
+
             mCurrentPosition ++
+
         }
     }
 
-    // TODO: wyrzucic selectionOptionView?
-    // czy ja chce wgl te funkcje? chyba nie. Ew. IF WCISKACZ BUTTON 1 -> POROWNAJ ODPOWIEDZI -> ZAKOLORUJ GUZIK
     private fun selectedOptionView(button: Button, selectedOptionNum: Int){
 
-        defaultOptionView()
+        //defaultOptionView()     // chodzi tu o to, ze jak wcisniesz drugi guzik to masz zresetowac "zaznaczenie" pierwszego guzika, wiec out
         mSelectedOptionPosition = selectedOptionNum
-//        val question = mQuestionsList?.get(mCurrentPosition - 1)
+
 
         // check if this is the last question
 //        if (mCurrentPosition == mQuestionsList!!.size) {
 //            button.text = "Finish"
 //        }
+
         Handler().postDelayed({
             // increment mCurrentPosition and set new question
 //            mCurrentPosition++
+
             if (mCurrentPosition <= mQuestionsList!!.size) {
                 setQuestion()
-            } else {
+            }
+            //else
+            {
                 // when all questions have been answered
                 Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
             }

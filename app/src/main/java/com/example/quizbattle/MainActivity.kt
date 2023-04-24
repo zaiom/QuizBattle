@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
+
             val intent = Intent(this, QuestionActivity::class.java)
+            //intent.putExtra(Constants.USER_NAME, )
             startActivity(intent)
             finish()
         }
