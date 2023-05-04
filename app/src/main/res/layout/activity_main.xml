@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="25dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Single Player"
             android:textAllCaps="false"
             android:textColor="@color/white" />
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="20dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Multi Player"
             android:textAllCaps="false"
             android:textColor="@color/white" />
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_margin="25dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Add Quiz"
             android:textAllCaps="false"
             android:textColor="@color/white" />
