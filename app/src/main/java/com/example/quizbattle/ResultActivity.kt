@@ -25,9 +25,11 @@ class ResultActivity : AppCompatActivity() {
         binding.score.text = "$correctAnswers" + " / " + "$totalQuestions"
 
         //binding.finishButton.setOnClickListener()
-        binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        binding.root.findViewById<View>(R.id.finishButton).setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             finish()
+
         }
     }
 }

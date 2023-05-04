@@ -140,25 +140,8 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         if (mSelectedOptionPosition == 0)
         {
-
-            when
-            {
-                mCurrentPosition <= mQuestionsList!!.size ->
-                {
-                    setQuestion()
-                }
-                else -> {
-
-                    //Toast.makeText(this, "You have successfully completed the Quiz", Toast.LENGTH_SHORT).show()
-
-                    val intent = Intent(this, ResultActivity::class.java)
-                    intent.putExtra(Constants.USER_NAME, mUserName)
-                    intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                    intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                    startActivity(intent)
-                    finish()
-                }
-            }
+            // Tu dodaj nowy kod:
+            Toast.makeText(this, "Please select an answer.", Toast.LENGTH_SHORT).show()
         }
         else
         {
@@ -167,7 +150,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
             if (question!!.correctAnswer != mSelectedOptionPosition)
             {
                 answerView(mSelectedOptionPosition, R.drawable.wrong_option_button_border_bg)
-                //answerView(mSelectedOptionPosition, button1.setBackgroundColor(Color.parseColor("#000000")))
             }
             else
             {
@@ -178,8 +160,21 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
             mSelectedOptionPosition = 0
 
-            mCurrentPosition ++
+            mCurrentPosition++
 
+            // Tutaj usuń wywołanie metody setQuestion() i przenieś je na koniec bloku else
+            if (mCurrentPosition <= mQuestionsList!!.size) {
+                Handler().postDelayed({
+                    setQuestion()
+                }, 1500)
+            } else {
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, mUserName)
+                intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
