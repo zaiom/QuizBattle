@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizbattle.databinding.ActivityQuestionBinding
 import android.os.Handler
+import androidx.annotation.NonNull
+import com.google.firebase.database.*
 
 
 class QuestionActivity : AppCompatActivity(), OnClickListener{
@@ -40,7 +42,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
-        mQuestionsList = Constants.getQuestions()
+//        mQuestionsList = Constants.getQuestions()
 
         setQuestion()
 
@@ -51,7 +53,35 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 
     }
+    class Modelclass {
+        private val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("Filmy")
+
+        init {
+            databaseReference.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    mQuestionsList.clear()
+                    for (dataSnapshot in snapshot.children) {
+                        val modelclass: Modelclass? = dataSnapshot.getValue(Modelclass::class.java)
+                        modelclass?.let { mQuestionsList.add(it) }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+
+        companion object {
+            var mQuestionsList: ArrayList<Modelclass> = ArrayList()
+        }
+
+        constructor()
+    }
+
+
+
+
     // sets question text, image, and button's text for the next question
+
     private fun setQuestion(){
 
         val question = mQuestionsList!![mCurrentPosition-1]

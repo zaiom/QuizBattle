@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-
+        QuestionActivity.Modelclass()
         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
 
             val intent = Intent(this, QuestionActivity::class.java)

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557667093536",
+    "project_id": "quizbattle-3fd93",
+    "storage_bucket": "quizbattle-3fd93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557667093536:android:9b91ee149b5950f2df0045",
+        "android_client_info": {
+          "package_name": "com.example.quizbattle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557667093536-q1u9rlovktc9kbj6veien40akp58s7vs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmBHQ3IFfG4t2_DiaFAnQ0Rt59kJXzl1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557667093536-q1u9rlovktc9kbj6veien40akp58s7vs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
