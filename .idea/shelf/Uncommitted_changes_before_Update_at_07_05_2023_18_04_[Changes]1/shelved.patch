@@ -1,0 +1,161 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/tlo\"\r\n    android:padding=\"24dp\"\r\n    tools:context=\".MainActivity\"\r\n    android:theme=\"@style/FullScreenTheme\">\r\n\r\n    <TextView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:id=\"@+id/headText\"\r\n        android:text=\"Quiz Battle\"\r\n        android:textColor=\"@color/black\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:textSize=\"40sp\"\r\n        android:textStyle=\"italic\"\r\n        android:fontFamily=\"sans-serif-black\"/>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_centerInParent=\"true\"\r\n        android:orientation=\"vertical\"\r\n        android:paddingTop=\"80dp\">\r\n\r\n\r\n        <Button\r\n            android:id=\"@+id/singlePlayerButton\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"76dp\"\r\n            android:layout_margin=\"25dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Single Player\"\r\n            android:textAllCaps=\"false\"\r\n            android:textColor=\"@color/white\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/multiPlayerButton\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"76dp\"\r\n            android:layout_margin=\"20dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Multi Player\"\r\n            android:textAllCaps=\"false\"\r\n            android:textColor=\"@color/white\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/addQuizButton\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"76dp\"\r\n            android:layout_margin=\"25dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Add Quiz\"\r\n            android:textAllCaps=\"false\"\r\n            android:textColor=\"@color/white\" />\r\n\r\n    </LinearLayout>\r\n\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	
++++ b/app/src/main/res/layout/activity_main.xml	
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="@drawable/tlo"
++    android:background="@drawable/tloQuestion"
+     android:padding="24dp"
+     tools:context=".MainActivity"
+     android:theme="@style/FullScreenTheme">
+Index: app/src/main/res/layout/activity_question.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:orientation=\"vertical\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/tlo\"\r\n    android:padding=\"25dp\"\r\n    android:fillViewport=\"true\"\r\n    tools:context=\".QuestionActivity\"\r\n    android:theme=\"@style/FullScreenTheme\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:gravity=\"center_vertical\"\r\n        android:layout_marginTop=\"5dp\"\r\n        android:id=\"@+id/progressBarLayout\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/progressText\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:gravity=\"center\"\r\n            android:padding=\"15dp\"\r\n            android:textColorHint=\"#030304\"\r\n            android:textSize=\"14sp\"\r\n            android:text=\"0/10\"\r\n            android:textStyle=\"bold\"/>\r\n\r\n        <ProgressBar\r\n            android:id=\"@+id/progressBar\"\r\n            style=\"?android:attr/progressBarStyleHorizontal\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_weight=\"1\"\r\n            android:max=\"10\"\r\n            android:minHeight=\"50dp\"\r\n            android:progress=\"0\"\r\n            android:indeterminate=\"false\"/>\r\n\r\n    </LinearLayout>\r\n\r\n    <TextView\r\n        android:id=\"@+id/questionText\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"This will be question\"\r\n        android:textAlignment=\"center\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"24dp\"\r\n        android:textStyle=\"bold\"\r\n        android:layout_below=\"@id/progressBarLayout\"\r\n        android:layout_marginTop=\"15dp\"\r\n        android:layout_centerHorizontal=\"true\"/>\r\n\r\n    <ImageView\r\n        android:id=\"@+id/questionImage\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:src=\"@drawable/flag_of_korea\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_below=\"@id/questionText\"/>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_marginTop=\"330dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:id=\"@+id/choices_layout\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <Button\r\n            android:id=\"@+id/answer1Button\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"68dp\"\r\n            android:layout_margin=\"5dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Answer A\"\r\n            android:textColor=\"@color/white\"\r\n            android:textAllCaps=\"false\"/>\r\n\r\n        <Button\r\n            android:id=\"@+id/answer2Button\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"68dp\"\r\n            android:layout_margin=\"5dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Answer B\"\r\n            android:textColor=\"@color/white\"\r\n            android:textAllCaps=\"false\"/>\r\n\r\n        <Button\r\n            android:id=\"@+id/answer3Button\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"68dp\"\r\n            android:layout_margin=\"5dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Answer C\"\r\n            android:textColor=\"@color/white\"\r\n            android:textAllCaps=\"false\"/>\r\n\r\n        <Button\r\n            android:id=\"@+id/answer4Button\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"68dp\"\r\n            android:layout_margin=\"5dp\"\r\n            android:background=\"#000000\"\r\n            android:text=\"Answer D\"\r\n            android:textColor=\"@color/white\"\r\n            android:textAllCaps=\"false\"/>\r\n\r\n    </LinearLayout>\r\n</RelativeLayout>\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_question.xml b/app/src/main/res/layout/activity_question.xml
+--- a/app/src/main/res/layout/activity_question.xml	
++++ b/app/src/main/res/layout/activity_question.xml	
+@@ -5,7 +5,7 @@
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="@drawable/tlo"
++    android:background="@drawable/tloQuestion"
+     android:padding="25dp"
+     android:fillViewport="true"
+     tools:context=".QuestionActivity"
+Index: app/src/main/java/com/example/quizbattle/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.quizbattle\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.TextView\r\nimport com.example.quizbattle.databinding.ActivityMainBinding\r\n\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    private lateinit var binding: ActivityMainBinding\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        binding = ActivityMainBinding.inflate(layoutInflater)\r\n        setContentView(R.layout.activity_main)\r\n\r\n        binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {\r\n\r\n            val intent = Intent(this, QuestionActivity::class.java)\r\n            //intent.putExtra(Constants.USER_NAME, )\r\n            startActivity(intent)\r\n            finish()\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/quizbattle/MainActivity.kt b/app/src/main/java/com/example/quizbattle/MainActivity.kt
+--- a/app/src/main/java/com/example/quizbattle/MainActivity.kt	
++++ b/app/src/main/java/com/example/quizbattle/MainActivity.kt	
+@@ -15,7 +15,7 @@
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         binding = ActivityMainBinding.inflate(layoutInflater)
+-        setContentView(R.layout.activity_main)
++        setContentView(binding.root)
+ 
+         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
+ 
+@@ -24,6 +24,13 @@
+             startActivity(intent)
+             finish()
+         }
++
++        binding.root.findViewById<View>(R.id.addQuizButton).setOnClickListener {
++
++            val intent = Intent(this, AddQuizActivity::class.java)
++            startActivity(intent)
++            finish()
++        }
+ 
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/newquiz.xml
+===================================================================
+diff --git a/app/src/main/res/layout/newquiz.xml b/app/src/main/res/layout/newquiz.xml
+deleted file mode 100644
+--- a/app/src/main/res/layout/newquiz.xml	
++++ /dev/null	
+@@ -1,55 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:background="@drawable/TłoQuestion"
+-    android:padding="24dp"
+-    tools:context=".MainActivity"
+-    android:theme="@style/FullScreenTheme">
+-
+-    <TextView
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:id="@+id/headText"
+-        android:gravity="center"
+-        android:text="Add new Quiz \n\n\nChoose category:"
+-        android:textColor="@color/black"
+-        android:layout_centerHorizontal="true"
+-        android:textSize="40sp"
+-        android:textStyle="italic"
+-        android:fontFamily="sans-serif-black"/>
+-
+-    <LinearLayout
+-        android:id="@+id/categorylist"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_centerInParent="true"
+-        android:orientation="vertical">
+-
+-
+-
+-
+-
+-        <!--        <Button-->
+-        <!--            android:id="@+id/singlePlayerButton"-->
+-        <!--            android:layout_width="match_parent"-->
+-        <!--            android:layout_height="76dp"-->
+-        <!--            android:layout_margin="25dp"-->
+-        <!--            android:backgroundTint="#000000"-->
+-        <!--            android:text="Single Player"-->
+-        <!--            android:textAllCaps="false"-->
+-        <!--            android:textColor="@color/white" />-->
+-
+-        <Spinner
+-            android:id="@+id/spinner1"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:layout_margin="15dp"/>
+-
+-
+-    </LinearLayout>
+-
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@drawable/flag_of_korea\"\r\n        android:label=\"@string/app_name\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.QuizBattle\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".ResultActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:theme=\"@style/FullScreenTheme\"\r\n            android:windowSoftInputMode=\"adjustResize\"/>\r\n        <activity\r\n            android:name=\".QuestionActivity\"\r\n            android:exported=\"false\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:theme=\"@style/FullScreenTheme\"\r\n            android:windowSoftInputMode=\"adjustResize\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\"\r\n            android:screenOrientation=\"portrait\"\r\n            android:theme=\"@style/FullScreenTheme\"\r\n            android:windowSoftInputMode=\"adjustResize\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	
++++ b/app/src/main/AndroidManifest.xml	
+@@ -12,11 +12,14 @@
+         android:theme="@style/Theme.QuizBattle"
+         tools:targetApi="31">
+         <activity
++            android:name=".AddQuizActivity"
++            android:exported="false" />
++        <activity
+             android:name=".ResultActivity"
+             android:exported="false"
+             android:screenOrientation="portrait"
+             android:theme="@style/FullScreenTheme"
+-            android:windowSoftInputMode="adjustResize"/>
++            android:windowSoftInputMode="adjustResize" />
+         <activity
+             android:name=".QuestionActivity"
+             android:exported="false"

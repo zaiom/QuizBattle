@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tloquestion"
+    android:padding="25dp"
+    android:fillViewport="true"
+    tools:context=".AddQuizActivity"
+    android:theme="@style/FullScreenTheme">
+
+
+    <TextView
+        android:id="@+id/choose_category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Choose category:"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/myListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+    <!-- <LinearLayout
+        android:id="@+id/categorylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"> -->
+
+
+    <Button
+        android:id="@+id/acceptButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:layout_marginTop="250dp"
+        android:text="Accept"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+
+    <!--        <Button-->
+        <!--            android:id="@+id/singlePlayerButton"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="76dp"-->
+        <!--            android:layout_margin="25dp"-->
+        <!--            android:backgroundTint="#000000"-->
+        <!--            android:text="Single Player"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            android:textColor="@color/white" />-->
+
+    <!-- <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"/> -->
+
+
+
+
+
+</RelativeLayout>
