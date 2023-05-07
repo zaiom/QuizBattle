@@ -15,12 +15,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
-        QuestionActivity.Modelclass()
+        setContentView(binding.root)
+
+        //QuestionActivity.Modelclass()
+
         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
 
             val intent = Intent(this, QuestionActivity::class.java)
             //intent.putExtra(Constants.USER_NAME, )
+            startActivity(intent)
+            finish()
+        }
+
+        binding.root.findViewById<View>(R.id.addQuizButton).setOnClickListener {
+
+            val intent = Intent(this, AddQuizActivity::class.java)
             startActivity(intent)
             finish()
         }

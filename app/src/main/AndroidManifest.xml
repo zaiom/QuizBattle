@@ -14,11 +14,17 @@
         android:theme="@style/Theme.QuizBattle"
         tools:targetApi="31">
         <activity
-            android:name=".ResultActivity"
+            android:name=".AddQuizActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreenTheme"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".QuestionActivity"
             android:exported="false"

@@ -1,10 +1,15 @@
 package com.example.quizbattle
 
+import com.google.firebase.database.DatabaseReference
+
 object Constants {
 
     const val USER_NAME: String = "user_name"
     const val TOTAL_QUESTIONS: String = "total_question"
     const val CORRECT_ANSWERS: String = "correct_answers"
+
+    public val questionsList = ArrayList<Question>()
+
 
 //    fun getQuestions(): ArrayList<Question>{
 //        val questionsList = ArrayList<Question>()

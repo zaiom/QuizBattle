@@ -27,9 +27,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private var mUserName: String? = null
 
     private lateinit var binding: ActivityQuestionBinding
-
-
-
+    private lateinit var mDatabase: DatabaseReference // przeniesienie deklaracji do poziomu klasy
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +41,11 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
 //        mQuestionsList = Constants.getQuestions()
+        mDatabase = FirebaseDatabase.getInstance().reference.child("Filmy")
 
-        setQuestion()
+
+        //setQuestion()
+        loadQuestions()
 
         binding.answer1Button.setOnClickListener(this)
         binding.answer2Button.setOnClickListener(this)
@@ -53,31 +54,27 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 
     }
-    class Modelclass {
-        private val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().getReference("Filmy")
 
-        init {
-            databaseReference.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    mQuestionsList.clear()
-                    for (dataSnapshot in snapshot.children) {
-                        val modelclass: Modelclass? = dataSnapshot.getValue(Modelclass::class.java)
-                        modelclass?.let { mQuestionsList.add(it) }
+
+
+    private fun loadQuestions()
+    {
+        mDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (questionSnapshot in dataSnapshot.children) {
+                        val question = questionSnapshot.getValue(Question::class.java)
+                        mQuestionsList?.add(question!!)
                     }
+                    setQuestion()
                 }
+            }
 
-                override fun onCancelled(error: DatabaseError) {}
-            })
-        }
-
-        companion object {
-            var mQuestionsList: ArrayList<Modelclass> = ArrayList()
-        }
-
-        constructor()
+            override fun onCancelled(databaseError: DatabaseError) {
+                // obsługa błędów
+            }
+        })
     }
-
-
 
 
     // sets question text, image, and button's text for the next question
