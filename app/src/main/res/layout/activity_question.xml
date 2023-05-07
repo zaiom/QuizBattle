@@ -55,6 +55,7 @@
         android:layout_below="@id/progressBarLayout"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"/>
+
     <ImageView
         android:id="@+id/questionImage"
         android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Answer A"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
@@ -86,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Answer B"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
@@ -96,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Answer C"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
@@ -106,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#000000"
+            android:background="#000000"
             android:text="Answer D"
             android:textColor="@color/white"
             android:textAllCaps="false"/>

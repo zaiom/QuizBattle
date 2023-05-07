@@ -7,7 +7,7 @@
 </style>
     <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
-        <item name="android:navigationBarColor">@color/sample1</item>
+        <item name="android:navigationBarColor">#000000</item>
         <item name="android:statusBarColor">@color/sample2</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
