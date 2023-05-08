@@ -34,7 +34,8 @@
         android:layout_marginTop="100dp"
         android:minHeight="60dp"
         android:background="#59704206"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:gravity="center_vertical"/>
 
 
 
