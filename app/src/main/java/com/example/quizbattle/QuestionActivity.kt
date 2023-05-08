@@ -31,7 +31,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     private lateinit var binding: ActivityQuestionBinding
     private lateinit var mDatabase: DatabaseReference // przeniesienie deklaracji do poziomu klasy
-
+    private lateinit var category: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,6 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
 //        mQuestionsList = Constants.getQuestions()
-
         mDatabase = FirebaseDatabase.getInstance().reference.child(node)
 
 
