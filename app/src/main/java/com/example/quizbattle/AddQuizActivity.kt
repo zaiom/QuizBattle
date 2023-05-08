@@ -17,35 +17,17 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private lateinit var binding: ActivityAddQuizBinding
 
 
-    //private var mQuestionsList: ArrayList<Question>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val listview = findViewById<ListView>(R.id.myListView)
-        val names = arrayOf("html", "Css", "php")
-
-        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, names)
-
-        listview.adapter = arrayAdapter
-
-        listview.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, "Item Selected " + names[i], Toast.LENGTH_SHORT).show()
-        }*/
-
-
         val spinner: Spinner = findViewById(R.id.spinner)
         val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this,R.array.categories, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
-
-
-
-
 
     }
 
