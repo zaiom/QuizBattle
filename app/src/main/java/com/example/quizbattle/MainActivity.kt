@@ -19,18 +19,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.root.findViewById<View>(R.id.singlePlayerButton).setOnClickListener {
 
-            val intent = Intent(this, QuestionActivity::class.java)
+            val intent = Intent(this, AddQuizActivity::class.java)
             //intent.putExtra(Constants.USER_NAME, )
             startActivity(intent)
             finish()
         }
 
-        binding.root.findViewById<View>(R.id.addQuizButton).setOnClickListener {
-
-            val intent = Intent(this, AddQuizActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.root.findViewById<View>(R.id.addQuizButton).setOnClickListener {
+//
+//            val intent = Intent(this, AddQuizActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
     }
 }

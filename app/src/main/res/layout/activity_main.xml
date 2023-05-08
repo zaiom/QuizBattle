@@ -48,15 +48,15 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/addQuizButton"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:layout_margin="25dp"
-            android:background="#000000"
-            android:text="Add Quiz"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
+<!--        <Button-->
+<!--            android:id="@+id/addQuizButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="76dp"-->
+<!--            android:layout_margin="25dp"-->
+<!--            android:background="#000000"-->
+<!--            android:text="Add Quiz"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white" />-->
 
     </LinearLayout>
 
