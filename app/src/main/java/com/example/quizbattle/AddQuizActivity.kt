@@ -39,7 +39,7 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item: String = p0?.getItemAtPosition(p2).toString()
-        Toast.makeText(p0?.context, item, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(p0?.context, item, Toast.LENGTH_SHORT).show()
         Constants.node = item
 
 
