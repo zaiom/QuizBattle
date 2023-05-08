@@ -31,6 +31,13 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
 
+        binding.root.findViewById<View>(R.id.acceptButton).setOnClickListener {
+
+            val intent = Intent(this, QuestionActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -45,10 +52,7 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         // metoda może pozostać pusta
     }
 
-    public fun SaveValue(item: String)
-    {
 
-    }
 }
 
 

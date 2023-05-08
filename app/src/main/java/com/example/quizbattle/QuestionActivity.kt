@@ -27,7 +27,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private var mCorrectAnswers: Int = 0
     private var mUserName: String? = null
 
-    var node = AddQuizActivity().node
+    var node: String = AddQuizActivity().node
 
     private lateinit var binding: ActivityQuestionBinding
     private lateinit var mDatabase: DatabaseReference // przeniesienie deklaracji do poziomu klasy
