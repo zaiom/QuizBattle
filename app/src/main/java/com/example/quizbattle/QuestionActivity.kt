@@ -27,7 +27,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     private var mCorrectAnswers: Int = 0
     private var mUserName: String? = null
 
-    var node: String = AddQuizActivity().node
+
 
     private lateinit var binding: ActivityQuestionBinding
     private lateinit var mDatabase: DatabaseReference // przeniesienie deklaracji do poziomu klasy
@@ -45,7 +45,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 //        mQuestionsList = Constants.getQuestions()
 
-        mDatabase = FirebaseDatabase.getInstance().reference.child(node)
+        mDatabase = FirebaseDatabase.getInstance().reference.child(Constants.node)
 
 
         //setQuestion()
