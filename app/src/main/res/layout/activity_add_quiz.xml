@@ -22,13 +22,17 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:labelFor="@+id/spinner"/>
 
-    <ListView
-        android:id="@+id/myListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choose_category_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:minHeight="48dp" />
 
 
     <!-- <LinearLayout

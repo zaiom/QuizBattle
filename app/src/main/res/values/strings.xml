@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">QuizBattle</string>
+    <string-array name="categories">
+        <item>Wiedza powszechna</item>
+        <item>Flagi</item>
+        <item>Stolice</item>
+    </string-array>
 </resources>

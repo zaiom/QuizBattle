@@ -41,7 +41,10 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
 //        mQuestionsList = Constants.getQuestions()
+
         mDatabase = FirebaseDatabase.getInstance().reference.child("Filmy")
+
+
 
 
         //setQuestion()
@@ -59,6 +62,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
     private fun loadQuestions()
     {
+        mQuestionsList = ArrayList()
         mDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
