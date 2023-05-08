@@ -80,7 +80,8 @@
         android:background="#000000"
         android:text="FINISH"
         android:textColor="@color/white"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp"
+        android:textSize="20dp"/>
 
 
 
