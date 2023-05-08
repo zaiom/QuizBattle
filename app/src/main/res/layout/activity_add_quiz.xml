@@ -23,7 +23,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:labelFor="@+id/spinner"/>
+        android:labelFor="@+id/spinner" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -32,7 +32,9 @@
         android:layout_below="@id/choose_category_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:minHeight="48dp" />
+        android:minHeight="60dp"
+        android:background="#59704206"
+        android:textSize="23dp"/>
 
 
 
