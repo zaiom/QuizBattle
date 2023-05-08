@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizbattle.databinding.ActivityQuestionBinding
 import android.os.Handler
+import android.os.Message
 import androidx.annotation.NonNull
 import com.google.firebase.database.*
 
@@ -60,25 +61,26 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 
 
-    private fun loadQuestions()
-    {
-        mQuestionsList = ArrayList()
+    private fun loadQuestions() {
         mDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
+                    mQuestionsList = arrayListOf() // creates a new empty list of questions
                     for (questionSnapshot in dataSnapshot.children) {
                         val question = questionSnapshot.getValue(Question::class.java)
                         mQuestionsList?.add(question!!)
                     }
-                    setQuestion()
                 }
+                // calls setQuestion() here to make sure it's called after the questions have been retrieved from the database
+                setQuestion()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // obsługa błędów
+                // error handling
             }
         })
     }
+
 
 
     // sets question text, image, and button's text for the next question
