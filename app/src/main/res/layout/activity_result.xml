@@ -74,12 +74,13 @@
         android:id="@+id/finishButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
+        android:layout_below="@id/see_you"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="#000000"
         android:text="FINISH"
         android:textColor="@color/white"
-        android:layout_below="@id/see_you"
-        android:layout_centerHorizontal="true"/>
+        android:minHeight="48dp"/>
 
 
 
