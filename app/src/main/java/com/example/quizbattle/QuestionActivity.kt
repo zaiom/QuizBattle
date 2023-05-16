@@ -1,21 +1,15 @@
 package com.example.quizbattle
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizbattle.databinding.ActivityQuestionBinding
 import android.os.Handler
-import android.os.Message
-import androidx.annotation.NonNull
+import android.widget.*
 import com.google.firebase.database.*
 
 
@@ -42,6 +36,7 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
+
 
 //        mQuestionsList = Constants.getQuestions()
 
@@ -86,22 +81,23 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
     // sets question text, image, and button's text for the next question
 
     private fun setQuestion(){
-
         val question = mQuestionsList!![mCurrentPosition-1]
 
         defaultOptionView()
 
         binding.progressBar.progress = ((mCurrentPosition*100)/mQuestionsList!!.size)/10
         binding.progressText.text = "$mCurrentPosition" + "/" + mQuestionsList!!.size
-
+        imageSelected(question.image)
         binding.questionText.text = question!!.question
-        binding.questionImage.setImageResource(question.image)
+        binding.questionImage.setImageResource(Constants.imageUrl)
 
 
         binding.answer1Button.text = question.optionOne
         binding.answer2Button.text = question.optionTwo
         binding.answer3Button.text = question.optionThree
         binding.answer4Button.text = question.optionFour
+//        val flagImageResource = resources.getIdentifier(question.image)
+//        binding.flagImageView.setImageResource(flagImageResource)
 
     }
 
@@ -238,6 +234,11 @@ class QuestionActivity : AppCompatActivity(), OnClickListener{
 
 
 
+    }
+    private fun imageSelected(imageNumber: Int) {
+        val flagsArray = resources.obtainTypedArray(R.array.flags)
+        val img: Int = flagsArray.getResourceId(imageNumber, 0)
+        Constants.imageUrl = img
     }
 
 }

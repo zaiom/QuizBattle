@@ -6,4 +6,13 @@
         <item>Filmy</item>
         <item>Losowo</item>
     </string-array>
+    <string-array name="flags" >
+        <item></item>
+        <item>@drawable/flag_of_korea</item>
+        <item>@drawable/flag_of_portugal</item>
+        <item>@drawable/flag_of_australia</item>
+        <item>@drawable/flag_of_fiji</item>
+        <item>@drawable/flag_of_serbia</item>
+        <item>@drawable/flag_of_qatar</item>
+    </string-array>
 </resources>

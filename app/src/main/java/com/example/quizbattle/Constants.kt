@@ -8,8 +8,9 @@ object Constants {
     const val TOTAL_QUESTIONS: String = "total_question"
     const val CORRECT_ANSWERS: String = "correct_answers"
     var node: String = ""
+    var imageUrl: Int = 0
 
-   // public val questionsList = ArrayList<Question>()
+    // public val questionsList = ArrayList<Question>()
 
 
 //    fun getQuestions(): ArrayList<Question>{

@@ -27,7 +27,7 @@
             android:padding="15dp"
             android:textColorHint="#030304"
             android:textSize="14sp"
-            android:text="0/10"
+            android:text=""
             android:textStyle="bold"/>
 
         <ProgressBar
@@ -47,7 +47,7 @@
         android:id="@+id/questionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This will be question"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24dp"
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:src="@drawable/flag_of_korea"
+        android:src="@drawable/tloquestion"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/questionText"/>
 
@@ -78,7 +78,7 @@
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:background="#000000"
-            android:text="Answer A"
+            android:text=""
             android:textColor="@color/white"
             android:textAllCaps="false"/>
 
@@ -88,7 +88,7 @@
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:background="#000000"
-            android:text="Answer B"
+            android:text=""
             android:textColor="@color/white"
             android:textAllCaps="false"/>
 
@@ -98,7 +98,7 @@
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:background="#000000"
-            android:text="Answer C"
+            android:text=""
             android:textColor="@color/white"
             android:textAllCaps="false"/>
 
@@ -108,7 +108,7 @@
             android:layout_height="68dp"
             android:layout_margin="5dp"
             android:background="#000000"
-            android:text="Answer D"
+            android:text=""
             android:textColor="@color/white"
             android:textAllCaps="false"/>
 

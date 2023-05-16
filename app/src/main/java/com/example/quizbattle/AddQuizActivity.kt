@@ -45,7 +45,6 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
            val  p2 = (0 until p3).random()
            println(p2)
             val item: String = p0?.getItemAtPosition(p2.toInt()).toString()
-            println(item)
             Constants.node = item
             }
         else {
@@ -56,7 +55,7 @@ class AddQuizActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
-        // metoda może pozostać pusta
+        // pusta implementacja metody
     }
 
 
